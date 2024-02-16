@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">sender</string>
+    <string name="screen1_default">Default text screen 1</string>
+    <string name="screen2_default">Default text screen 2</string>
+    <string name="btn_text1">Randomize!</string>
+    <string name="btn_to_screen2_empty">Continue without verification</string>
+    <string name="btn_to_screen2_send">Generate verification</string>
+    <string name="btn_to_screen1_empty">Screen 1 without send</string>
+    <string name="btn_to_screen1_send">Screen 1 sending</string>
+    <string name="btn_default">Def</string>
 </resources>
