@@ -1,5 +1,6 @@
 package com.dmv.sender;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +37,7 @@ public class pantallados extends AppCompatActivity {
         touch1 = findViewById(R.id.touch1);
         touch2 = findViewById(R.id.touch2);
         touch3 = findViewById(R.id.touch3);
+        return1 = findViewById(R.id.return1);
         text_screen2 = findViewById(R.id.text_screen2);
 
         try{
@@ -97,6 +99,14 @@ public class pantallados extends AppCompatActivity {
         } else{
             labeltext = noIntentMsg;
         }
+
+        return1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(pantallados.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
     private boolean find(String[] list, String element){
         for (String e: list){
