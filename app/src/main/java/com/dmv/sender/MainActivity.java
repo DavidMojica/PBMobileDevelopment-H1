@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         btn_change1 = findViewById(R.id.btn1);
-        btn_nosend = findViewById(R.id.btn_nosend);
         btn_send = findViewById(R.id.btn_sender);
         text_screen1 = findViewById(R.id.text_screen1);
 
@@ -49,14 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 int randomElement = rand.nextInt(randomizer.length);
                 textsender = randomizer[randomElement];
                 text_screen1.setText(textsender);
-            }
-        });
-
-        btn_nosend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, pantallados.class);
-                startActivity(i);
             }
         });
         btn_send.setOnClickListener(new View.OnClickListener() {
@@ -82,12 +73,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return pairs;
     }
-
     private static byte getRandomNumber(int min, int max){
         Random rnd = new Random();
         return (byte) (rnd.nextInt(max - min + 1) + min);
     }
-
-
 }
 

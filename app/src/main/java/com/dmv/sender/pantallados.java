@@ -27,7 +27,6 @@ public class pantallados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantallados);
-        Toast.makeText(getApplicationContext(), "Created", Toast.LENGTH_SHORT).show();
     }
 
     @Override
