@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     String Tag = "test";
     String setText1, setText2;
     static byte minPair = 1, maxPair = 99;
+    byte randomByte, correctPos;
+    String[] keys = new String[3];
 
 
     @Override
@@ -69,18 +74,21 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, pantallados.class);
                 i.putExtra("labelText", text_screen1.getText().toString());
                 i.putExtra("verification", getVerificationNumber());
+                i.putExtra("keys", keys);
                 startActivity(i);
             }
         });
 
     }
 
-    private HashMap<Byte, Byte> getVerificationNumber() {
-        HashMap<Byte, Byte> pairs = new HashMap<>();
-        byte correctPos = getRandomNumber(0, 2);
+    private HashMap<Byte, Boolean> getVerificationNumber() {
+        HashMap<Byte, Boolean> pairs = new HashMap<>();
+        correctPos = getRandomNumber(0, 2);
         for (byte i = 0; i < 3; i++){
-            byte key = (i == correctPos) ? 10 : i;
-            pairs.put(key, getRandomNumber(minPair, maxPair));
+            boolean val = (i == correctPos) ? true : false;
+            randomByte = getRandomNumber(minPair, maxPair);
+            pairs.put(randomByte, val);
+            keys[i] = String.valueOf(randomByte);
         }
         return pairs;
     }

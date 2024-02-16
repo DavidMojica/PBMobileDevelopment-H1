@@ -26,8 +26,8 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_gravity="center">
 
             <Button
@@ -45,22 +45,19 @@
                 android:minHeight="120dp">
             </Button>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/touch3"
                 android:text="@string/screen2_default"
                 android:minHeight="120dp">
             </Button>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/return1"
+                android:text="@string/screen2_default"
+                android:minHeight="120dp">
+            </Button>
         </LinearLayout>
-
     </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/return1"
-        android:text="@string/screen2_default"
-        android:minHeight="120dp">
-    </Button>
-
 </LinearLayout>
