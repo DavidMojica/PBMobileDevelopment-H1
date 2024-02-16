@@ -8,4 +8,5 @@
     <string name="btn_to_screen2_send">Screen 2 sending</string>
     <string name="btn_to_screen1_empty">Screen 1 without send</string>
     <string name="btn_to_screen1_send">Screen 1 sending</string>
+    <string name="btn_default">Def</string>
 </resources>

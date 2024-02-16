@@ -75,12 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    private HashMap<Boolean, Byte> getVerificationNumber() {
-        HashMap<Boolean, Byte> pairs = new HashMap<>();
-        byte truePos = getRandomNumber(0, 2);
+    private HashMap<Byte, Byte> getVerificationNumber() {
+        HashMap<Byte, Byte> pairs = new HashMap<>();
+        byte correctPos = getRandomNumber(0, 2);
         for (byte i = 0; i < 3; i++){
-            boolean key = (i == truePos) ? true : false;
+            byte key = (i == correctPos) ? 10 : i;
             pairs.put(key, getRandomNumber(minPair, maxPair));
         }
         return pairs;
