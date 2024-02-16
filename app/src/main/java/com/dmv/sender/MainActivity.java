@@ -18,14 +18,15 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_change1, btn_change2, btn_nosend, btn_send;
+    Button btn_change1, btn_nosend, btn_send;
     TextView text_screen1;
     String Tag = "test";
-    String setText1, setText2;
+    String setText1, textsender;
     static byte minPair = 1, maxPair = 99;
     byte randomByte, correctPos;
     String[] keys = new String[3];
-
+    String[] randomizer = {"Avid reader", "Stealth ninja", "Pineaple airplane", "Html is a programing language (brainless)", "I've lived in Prypiat"};
+    Random rand = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,30 +38,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         btn_change1 = findViewById(R.id.btn1);
-        btn_change2 = findViewById(R.id.btn2);
         btn_nosend = findViewById(R.id.btn_nosend);
         btn_send = findViewById(R.id.btn_sender);
         text_screen1 = findViewById(R.id.text_screen1);
-
-        //Messages
-        Calendar calendar = Calendar.getInstance();
-
-        setText1 = "Today is " + calendar.get(Calendar.YEAR ) +" "+ calendar.get(Calendar.MONTH)+ " " + calendar.get(Calendar.DAY_OF_MONTH);
-        setText2 = "I lived in Prypiat";
 
         //------------ Listeners --------------//
         btn_change1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                text_screen1.setText(setText1);
+                int randomElement = rand.nextInt(randomizer.length);
+                textsender = randomizer[randomElement];
+                text_screen1.setText(textsender);
             }
         });
-        btn_change2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                text_screen1.setText(setText2);
-            }
-        });
+
         btn_nosend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, pantallados.class);
-                i.putExtra("labelText", text_screen1.getText().toString());
+                i.putExtra("text", textsender);
                 i.putExtra("verification", getVerificationNumber());
                 i.putExtra("keys", keys);
                 startActivity(i);
@@ -80,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
     private HashMap<Byte, Boolean> getVerificationNumber() {
         HashMap<Byte, Boolean> pairs = new HashMap<>();
         correctPos = getRandomNumber(0, 2);
@@ -97,4 +87,7 @@ public class MainActivity extends AppCompatActivity {
         Random rnd = new Random();
         return (byte) (rnd.nextInt(max - min + 1) + min);
     }
+
+
 }
+
