@@ -2,10 +2,14 @@ package com.dmv.sender;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -14,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn_change1, btn_change2, btn_nosend, btn_send;
     TextView text_screen1;
     String Tag = "test";
+    String setText1, setText2;
     static byte minPair = 1, maxPair = 99;
 
 
@@ -32,8 +37,41 @@ public class MainActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.btn_sender);
         text_screen1 = findViewById(R.id.text_screen1);
 
-        //------------ Listeners --------------//
+        //Messages
+        Calendar calendar = Calendar.getInstance();
 
+        setText1 = "Today is " + calendar.get(Calendar.YEAR ) +" "+ calendar.get(Calendar.MONTH)+ " " + calendar.get(Calendar.DAY_OF_MONTH);
+        setText2 = "I lived in Prypiat";
+
+        //------------ Listeners --------------//
+        btn_change1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text_screen1.setText(setText1);
+            }
+        });
+        btn_change2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text_screen1.setText(setText2);
+            }
+        });
+        btn_nosend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, pantallados.class);
+                startActivity(i);
+            }
+        });
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, pantallados.class);
+                i.putExtra("labelText", text_screen1.getText().toString());
+                i.putExtra("verification", getVerificationNumber());
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -45,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             boolean key = (i == truePos) ? true : false;
             pairs.put(key, getRandomNumber(minPair, maxPair));
         }
-
         return pairs;
     }
 

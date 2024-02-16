@@ -1,6 +1,8 @@
 package com.dmv.sender;
 
-public class pantallados {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class pantallados extends AppCompatActivity {
 
 
 }
