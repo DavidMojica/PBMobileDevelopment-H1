@@ -5,8 +5,85 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/darkgray"
+    >
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:minHeight="80dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_screen1"
+            android:text="@string/screen1_default"
+            android:textColor="@color/orangelight"
+            android:textSize="40sp"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="120dp"
+            android:text="@string/btn_text1"
+            android:textColor="@color/orangelight"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn2"
+            android:text="@string/btn_text2"
+            android:textColor="@color/orangelight"
+            android:minHeight="120dp"
+            android:layout_marginBottom="40dp"
+            >
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="h"
+        android:layout_gravity="center"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_nosend"
+            android:textColor="@color/white"
+            android:text="@string/btn_to_screen2_empty"
+            android:width="200dp"
+            >
+        </Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_sender"
+            android:textColor="@color/white"
+            android:text="@string/btn_to_screen2_send"
+            android:width="200dp"
+            >
+        </Button>
+
+
+    </LinearLayout>
 
 
 
