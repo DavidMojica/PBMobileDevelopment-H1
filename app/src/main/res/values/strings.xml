@@ -2,10 +2,13 @@
     <string name="app_name">sender</string>
     <string name="screen1_default">Default text screen 1</string>
     <string name="screen2_default">Default text screen 2</string>
+    <string name="screen2_textSent">Text Received:</string>
     <string name="btn_text1">Randomize!</string>
     <string name="btn_to_screen2_empty">Continue without verification</string>
     <string name="btn_to_screen2_send">Generate verification</string>
     <string name="btn_to_screen1">Back</string>
     <string name="btn_default">Def</string>
-    <string name="text_info">This view will generate 3 numbers that will be sended to the other view. Among the numbers, only one is correct and the others are incorrect. Good luck!</string>
+    <string name="text_info">This view will generate 3 numbers that will be sent to the other view. Among the numbers, only one is correct and the others are incorrect. Good luck!</string>
+    <string name="text_info2">Now you have to choice the correct number. Dont you worry, is completely random</string>
+    <string name="attempts">Attempts: </string>
 </resources>
