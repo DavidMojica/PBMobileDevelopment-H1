@@ -5,8 +5,7 @@
     <string name="btn_text1">Randomize!</string>
     <string name="btn_to_screen2_empty">Continue without verification</string>
     <string name="btn_to_screen2_send">Generate verification</string>
-    <string name="btn_to_screen1_empty">Screen 1 without send</string>
-    <string name="btn_to_screen1_send">Screen 1 sending</string>
+    <string name="btn_to_screen1">Back</string>
     <string name="btn_default">Def</string>
     <string name="text_info">This view will generate 3 numbers that will be sended to the other view. Among the numbers, only one is correct and the others are incorrect. Good luck!</string>
 </resources>
