@@ -14,14 +14,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class pantallados extends AppCompatActivity {
-    TextView text_screen2;
+    TextView text_screen2 ,attempts;
     Button touch1, touch2, touch3, return1;
     String labeltext, volatileText;
     String noIntentMsg = "No data sent in Intent";
+    String attemptStr = "Attempt: ";
     HashMap<Byte, Boolean> pairs = new HashMap<Byte, Boolean>();
     String[] keys = new String[3];
-
-    Boolean ban = true;
+    Boolean ban = true, reached = false;
+    int attemptsInt = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class pantallados extends AppCompatActivity {
         touch3 = findViewById(R.id.touch3);
         return1 = findViewById(R.id.return1);
         text_screen2 = findViewById(R.id.text_screen2);
+        attempts = findViewById(R.id.attempts);
 
         try{
             labeltext = getIntent().getStringExtra("text");
@@ -61,8 +63,11 @@ public class pantallados extends AppCompatActivity {
                     if(find(keys, volatileText) && pairs.containsKey(Byte.valueOf(volatileText)) && pairs.get(Byte.valueOf(volatileText))){
                         Toast.makeText(getApplicationContext(), "Correcto", Toast.LENGTH_SHORT).show();
                         touch1.setBackgroundColor(Color.GREEN);
+                        countAttempts();
+                        reached = true;
                     } else{
                         touch1.setBackgroundColor(Color.RED);
+                        countAttempts();
                     }
                 }
             });
@@ -74,9 +79,12 @@ public class pantallados extends AppCompatActivity {
                     if(find(keys, volatileText) && pairs.containsKey(Byte.valueOf(volatileText)) && pairs.get(Byte.valueOf(volatileText))){
                         Toast.makeText(getApplicationContext(), "Correcto", Toast.LENGTH_SHORT).show();
                         touch2.setBackgroundColor(Color.GREEN);
+                        countAttempts();
+                        reached = true;
                     }
                     else {
                         touch2.setBackgroundColor(Color.RED);
+                        countAttempts();
                     }
                 }
             });
@@ -88,9 +96,12 @@ public class pantallados extends AppCompatActivity {
                     if(find(keys, volatileText) && pairs.containsKey(Byte.valueOf(volatileText)) && pairs.get(Byte.valueOf(volatileText))){
                         Toast.makeText(getApplicationContext(), "Correcto", Toast.LENGTH_SHORT).show();
                         touch3.setBackgroundColor(Color.GREEN);
+                        countAttempts();
+                        reached = true;
                     }
                     else {
                         touch3.setBackgroundColor(Color.RED);
+                        countAttempts();
                     }
                 }
             });
@@ -112,5 +123,12 @@ public class pantallados extends AppCompatActivity {
             if(e.equals(element)) return true;
         }
         return false;
+    }
+
+    private void countAttempts(){
+        if (!reached) {
+            attemptsInt += 1;
+            attempts.setText(attemptStr.concat(String.valueOf(attemptsInt)));
+        }
     }
 }
