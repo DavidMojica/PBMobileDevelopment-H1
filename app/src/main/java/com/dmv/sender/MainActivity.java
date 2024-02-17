@@ -18,30 +18,37 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_change1, btn_nosend, btn_send;
-    TextView text_screen1;
-    String Tag = "test";
-    String setText1, textsender;
-    static byte minPair = 1, maxPair = 99;
-    byte randomByte, correctPos;
+    Button btn_change1, btn_send;
+    TextView text_screen1, text_info;
+    String attempts,Tag = "test", attemptsStr = "Attempts to discover the number: ", textsender = "You haven't randomized the text. This is a default text.";
     String[] keys = new String[3];
     String[] randomizer = {"Avid reader", "Stealth ninja", "Pineaple airplane", "Html is a programing language (brainless)", "I've lived in Prypiat"};
+    static byte minPair = 1, maxPair = 99;
+    byte randomByte, correctPos;
     Random rand = new Random();
-
+    //--------Life loop methods--------//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
     @Override
     protected void onStart() {
         super.onStart();
+        //----------"""DOM"""---------//
         btn_change1 = findViewById(R.id.btn1);
         btn_send = findViewById(R.id.btn_sender);
         text_screen1 = findViewById(R.id.text_screen1);
+        text_info = findViewById(R.id.text_info);
+
+        //--Tries to get the attempts string provided by screen 2 and change the info text.---//
+        try{
+            attempts = getIntent().getStringExtra("attempts");
+            text_info.setText(attemptsStr.concat(attempts));
+        } catch (Exception e){}
 
         //------------ Listeners --------------//
+        //Randomizer
         btn_change1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 text_screen1.setText(textsender);
             }
         });
+        //Generator & sender
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    /***
+     * Gets a dictionary with 3 random keys between 1 - 99 and 3 boolean values,
+     * where 2 booleans always be false and the remaining boolean always be true.
+     * The numbers keys will be displayed in the 2nd screen buttons and the booleans
+     * will check the user clicks. The program will mark bad if you tap a number that
+     * their value is false and will mark as correct when you tap the 'true' number.
+     * @return HashMap
+     */
     private HashMap<Byte, Boolean> getVerificationNumber() {
         HashMap<Byte, Boolean> pairs = new HashMap<>();
         correctPos = getRandomNumber(0, 2);
@@ -73,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return pairs;
     }
+    /***
+     * Gets a random number in a range.
+     * This function has been limited returning a byte due to the program doesn't need a higher number
+     * @param min minor number (included)
+     * @param max major number (included)
+     * @return byte
+     */
     private static byte getRandomNumber(int min, int max){
         Random rnd = new Random();
         return (byte) (rnd.nextInt(max - min + 1) + min);

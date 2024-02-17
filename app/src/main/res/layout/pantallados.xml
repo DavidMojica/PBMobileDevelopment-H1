@@ -12,51 +12,98 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_marginBottom="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/screen2_textSent"
+            android:textColor="@color/purple"
+            android:textSize="24sp">
+        </TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/screen2_default"
             android:textColor="@color/purple"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:id="@+id/text_screen2">
         </TextView>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/touch1"
-                android:text="@string/screen2_default"
-                android:minHeight="120dp">
-            </Button>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/touch2"
-                android:text="@string/screen2_default"
-                android:minHeight="120dp">
-            </Button>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/touch3"
-                android:text="@string/screen2_default"
-                android:minHeight="120dp">
-            </Button>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/return1"
-                android:text="@string/screen2_default"
-                android:minHeight="120dp">
-            </Button>
-        </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_info2"
+            android:textColor="@color/black"
+            android:textSize="24sp">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/touch1"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:minHeight="120dp"
+            android:text="@string/screen2_default">
+
+        </Button>
+
+        <Button
+            android:id="@+id/touch2"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:minHeight="120dp"
+            android:text="@string/screen2_default">
+
+        </Button>
+        <Button
+            android:layout_height="wrap_content"
+            android:id="@+id/touch3"
+            android:layout_width="135dp"
+            android:text="@string/screen2_default"
+            android:minHeight="120dp">
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attempts"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/attempts">
+        </TextView>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/return1"
+            android:text="@string/btn_to_screen1"
+            >
+        </Button>
+    </LinearLayout>
+
 </LinearLayout>
