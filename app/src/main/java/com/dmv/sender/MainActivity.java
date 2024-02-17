@@ -18,10 +18,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_change1, btn_nosend, btn_send;
-    TextView text_screen1;
-    String Tag = "test";
-    String setText1, textsender;
+    Button btn_change1, btn_send;
+    TextView text_screen1, text_info;
+    String Tag = "test", attemptsStr = "Attempts to discover the number: ";
+    String setText1, textsender, attempts;
     static byte minPair = 1, maxPair = 99;
     byte randomByte, correctPos;
     String[] keys = new String[3];
@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         btn_change1 = findViewById(R.id.btn1);
         btn_send = findViewById(R.id.btn_sender);
         text_screen1 = findViewById(R.id.text_screen1);
+        text_info = findViewById(R.id.text_info);
+
+        try{
+            attempts = getIntent().getStringExtra("attempts");
+            text_info.setText(attemptsStr.concat(attempts));
+        } catch (Exception e){}
 
         //------------ Listeners --------------//
         btn_change1.setOnClickListener(new View.OnClickListener() {

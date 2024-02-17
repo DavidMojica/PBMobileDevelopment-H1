@@ -22,7 +22,7 @@ public class pantallados extends AppCompatActivity {
     HashMap<Byte, Boolean> pairs = new HashMap<Byte, Boolean>();
     String[] keys = new String[3];
     Boolean ban = true, reached = false;
-    int attemptsInt = 0;
+    int attemptsInt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class pantallados extends AppCompatActivity {
         return1 = findViewById(R.id.return1);
         text_screen2 = findViewById(R.id.text_screen2);
         attempts = findViewById(R.id.attempts);
+        attemptsInt = 0;
 
         try{
             labeltext = getIntent().getStringExtra("text");
@@ -53,9 +54,7 @@ public class pantallados extends AppCompatActivity {
             touch1.setText(keys[0]);
             touch2.setText(keys[1]);
             touch3.setText(keys[2]);
-
             text_screen2.setText(labeltext);
-
             touch1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,7 +70,6 @@ public class pantallados extends AppCompatActivity {
                     }
                 }
             });
-
             touch2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -88,7 +86,6 @@ public class pantallados extends AppCompatActivity {
                     }
                 }
             });
-
             touch3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -105,15 +102,14 @@ public class pantallados extends AppCompatActivity {
                     }
                 }
             });
-
         } else{
             labeltext = noIntentMsg;
         }
-
         return1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(pantallados.this, MainActivity.class);
+                i.putExtra("attempts", String.valueOf(attemptsInt));
                 startActivity(i);
             }
         });
@@ -124,7 +120,6 @@ public class pantallados extends AppCompatActivity {
         }
         return false;
     }
-
     private void countAttempts(){
         if (!reached) {
             attemptsInt += 1;
