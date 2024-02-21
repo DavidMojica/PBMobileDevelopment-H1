@@ -45,7 +45,6 @@ public class pantallados extends AppCompatActivity {
         pairs = (HashMap<Byte, Boolean>) getIntent().getSerializableExtra("verification");
         keys = getIntent().getStringArrayExtra("keys");
 
-
         touch1.setText(keys[0]);
         touch2.setText(keys[1]);
         touch3.setText(keys[2]);

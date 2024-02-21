@@ -13,19 +13,38 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    // Variables de UI
+    Button btn_change1;
+    Button btn_send;
+    TextView text_screen1;
+    TextView text_info;
 
-    Button btn_change1, btn_send;
-    TextView text_screen1, text_info;
-    String attempts,Tag = "test";
+    // Variables de texto
+    String attempts;
     String attemptsStr = "Attempts to discover the number:";
     String textsender = "You haven't randomized the text. This is a default text.";
     String textResume = "Finally, you have returned! (OnResume)";
+
+    // Arrays
     String[] keys = new String[3];
-    String[] randomizer = {"Avid reader", "Stealth ninja", "Pineaple airplane", "Html is a programing language (brainless)", "I've lived in Prypiat"};
-    static byte minPair = 1, maxPair = 99;
-    byte randomByte, correctPos;
+    String[] randomizer = {
+            "Avid reader",
+            "Stealth ninja",
+            "Pineaple airplane",
+            "Html is a programing language (brainless)",
+            "I've lived in Prypiat"
+    };
+
+    // Variables de byte
+    static byte minPair = 1;
+    static byte maxPair = 99;
+    byte randomByte;
+    byte correctPos;
+
+    // Otros
     Random rand = new Random();
     HashMap<Byte, Boolean> pairs = new HashMap<>();
+
     //--------Life loop methods--------//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         pairs = getVerificationNumbers();
         super.onStop();
     }
-
     @Override
     protected void onResume() {
         textsender = textResume;
@@ -95,10 +113,8 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     protected void onDestroy() {
-
         super.onDestroy();
     }
-
     /***
      * Gets a dictionary with 3 random keys between 1 - 99 and 3 boolean values,
      * where 2 booleans always be false and the remaining boolean always be true.
@@ -108,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
      * @return HashMap
      */
     private HashMap<Byte, Boolean> getVerificationNumbers() {
-
         correctPos = getRandomNumber(0, 2);
         for (byte i = 0; i < 3; i++){
             boolean val = (i == correctPos) ? true : false;
