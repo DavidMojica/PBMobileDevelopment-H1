@@ -18,13 +18,11 @@ public class MainActivity extends AppCompatActivity {
     Button btn_send;
     TextView text_screen1;
     TextView text_info;
-
     // Variables de texto
     String attempts;
     String attemptsStr = "Attempts to discover the number:";
     String textsender = "You haven't randomized the text. This is a default text.";
     String textResume = "Finally, you have returned! (OnResume)";
-
     // Arrays
     String[] keys = new String[3];
     String[] randomizer = {
@@ -32,15 +30,16 @@ public class MainActivity extends AppCompatActivity {
             "Stealth ninja",
             "Pineaple airplane",
             "Html is a programing language (brainless)",
-            "I've lived in Prypiat"
+            "I've lived in Prypiat",
+            "RandomText",
+            "Java != JavaScript",
+            "Java === JavaScript"
     };
-
     // Variables de byte
     static byte minPair = 1;
     static byte maxPair = 99;
     byte randomByte;
     byte correctPos;
-
     // Otros
     Random rand = new Random();
     HashMap<Byte, Boolean> pairs = new HashMap<>();
