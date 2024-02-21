@@ -14,13 +14,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class pantallados extends AppCompatActivity {
-    TextView text_screen2 ,attempts;
-    Button touch1, touch2, touch3, return1;
-    String labeltext, volatileText, noIntentMsg = "No data sent in Intent", attemptStr = "Attempt: ";
+    // Elementos de la interfaz de usuario
+    TextView text_screen2;
+    TextView attempts;
+    Button touch1;
+    Button touch2;
+    Button touch3;
+    Button return1;
+    // Variables de texto
+    String labeltext;
+    String volatileText;
+    String noIntentMsg = "No data sent in Intent";
+    String attemptStr = "Attempt: ";
+    // Arrays
     String[] keys = new String[3];
-    HashMap<Byte, Boolean> pairs = new HashMap<Byte, Boolean>();
+    // Colecciones
+    HashMap<Byte, Boolean> pairs = new HashMap<>();
+    // Otras variables
     Boolean reached = false;
     int attemptsInt;
+
 
     //--------Life loop methods--------//
     @Override
@@ -44,7 +57,6 @@ public class pantallados extends AppCompatActivity {
         labeltext = getIntent().getStringExtra("text");
         pairs = (HashMap<Byte, Boolean>) getIntent().getSerializableExtra("verification");
         keys = getIntent().getStringArrayExtra("keys");
-
 
         touch1.setText(keys[0]);
         touch2.setText(keys[1]);

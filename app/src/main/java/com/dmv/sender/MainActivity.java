@@ -9,23 +9,41 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    Button btn_change1, btn_send;
-    TextView text_screen1, text_info;
-    String attempts,Tag = "test", attemptsStr = "Attempts to discover the number: ", textsender = "You haven't randomized the text. This is a default text.";
+    // Variables de UI
+    Button btn_change1;
+    Button btn_send;
+    TextView text_screen1;
+    TextView text_info;
+    // Variables de texto
+    String attempts;
+    String attemptsStr = "Attempts to discover the number:";
+    String textsender = "You haven't randomized the text. This is a default text.";
+    String textResume = "Finally, you have returned! (OnResume)";
+    // Arrays
     String[] keys = new String[3];
-    String[] randomizer = {"Avid reader", "Stealth ninja", "Pineaple airplane", "Html is a programing language (brainless)", "I've lived in Prypiat"};
-    static byte minPair = 1, maxPair = 99;
-    byte randomByte, correctPos;
+    String[] randomizer = {
+            "Avid reader",
+            "Stealth ninja",
+            "Pineaple airplane",
+            "Html is a programing language (brainless)",
+            "I've lived in Prypiat",
+            "RandomText",
+            "Java != JavaScript",
+            "Java === JavaScript"
+    };
+    // Variables de byte
+    static byte minPair = 1;
+    static byte maxPair = 99;
+    byte randomByte;
+    byte correctPos;
+    // Otros
     Random rand = new Random();
+    HashMap<Byte, Boolean> pairs = new HashMap<>();
+
     //--------Life loop methods--------//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         text_screen1 = findViewById(R.id.text_screen1);
         text_info = findViewById(R.id.text_info);
 
+        //---Generate number pairs---//
+        pairs = getVerificationNumbers();
         //--Tries to get the attempts string provided by screen 2 and change the info text.---//
         try{
             attempts = getIntent().getStringExtra("attempts");
@@ -63,12 +83,36 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, pantallados.class);
                 i.putExtra("text", textsender);
-                i.putExtra("verification", getVerificationNumber());
+                i.putExtra("verification", pairs);
                 i.putExtra("keys", keys);
                 startActivity(i);
             }
         });
-
+    }
+    @Override
+    protected void onPause() {
+        //Regenerate number pairs
+        pairs.clear();
+        pairs = getVerificationNumbers();
+        super.onPause();
+    }
+    @Override
+    protected void onStop() {
+        //Regenerate number pairs
+        pairs.clear();
+        pairs = getVerificationNumbers();
+        super.onStop();
+    }
+    @Override
+    protected void onResume() {
+        textsender = textResume;
+        text_screen1.setText(textsender);
+        Toast.makeText(getApplicationContext(), "OnResume", Toast.LENGTH_SHORT).show();
+        super.onResume();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
     /***
      * Gets a dictionary with 3 random keys between 1 - 99 and 3 boolean values,
@@ -78,8 +122,7 @@ public class MainActivity extends AppCompatActivity {
      * their value is false and will mark as correct when you tap the 'true' number.
      * @return HashMap
      */
-    private HashMap<Byte, Boolean> getVerificationNumber() {
-        HashMap<Byte, Boolean> pairs = new HashMap<>();
+    private HashMap<Byte, Boolean> getVerificationNumbers() {
         correctPos = getRandomNumber(0, 2);
         for (byte i = 0; i < 3; i++){
             boolean val = (i == correctPos) ? true : false;
